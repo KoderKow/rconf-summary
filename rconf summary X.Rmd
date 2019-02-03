@@ -1,0 +1,140 @@
+---
+title: "RStudio Conference Summary"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    chakra: libs/remark-latest.min.js
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class:
+
+# Overview
+
+- What is RStudio Conference
+- Workshops
+- Key Takeaways
+- RStudio Connect
+
+---
+
+# RStudio Conference
+
+- For all things R and RStuido
+- First two days were for workshops
+    - Everything from big data/database courses, shiny, reproducible reports, admin, and  introduction courses
+- Last two days had talks throughout the day with some keynotes
+    - These should all be recorded and are publicly available
+    - Includes variety of topics from stories with R to presenting exciting packages that are in development
+
+---
+
+# Workshops: Big Data
+
+- This class showcased the power the RStudio IDE (Integrated development environment) has with connecting directly to a data base
+- Plugins are available for all major database types
+    - Microsoft SQL Server, Postgres, Redshift, etc
+- One of the notable issues with RStudio is loading data into memory. If there is a situation where the data are "big". 
+    - "Data > Ram" 
+- The R library **dplyr** and **dbplyr** allow the user to only have to know the dplyr syntax to work with the data from a database
+    - Wow!
+
+---
+
+# Quick Example
+
+- Create a connection
+
+```r
+con <- DBI::dbConnect(odbc::odbc(),
+                      Driver   = "[your driver's name]",
+                      Server   = "[your server's path]",
+                      Database = "[your database's name]",
+                      UID      = rstudioapi::askForPassword("Database user"),
+                      PWD      = rstudioapi::askForPassword("Database password"),
+                      Port     = 1433)
+```
+
+- *Note*: RStudio Connect allows the system admin to have data connections per user, more on that later
+- Create a variable that *references a table*, this referenced table will act like a data frame in R
+
+```r
+airports <- tbl(con, in_schema("datawarehouse", "airport"))
+```
+
+- This reference will allow us to do anything we want. If you were handed this data frame without context, you wouldn't tell the difference
+
+---
+
+# Quick Example Cont'd
+
+- Simple select all query
+
+```r
+airports %>%
+  show_query()
+```
+
+```r
+## <SQL>
+## SELECT *
+## FROM datawarehouse.airport
+```
+
+- Same thing, but just the head of the data; first 6 rows
+
+```r
+airports %>%
+  head() %>%
+  show_query()
+```
+
+```r
+## <SQL>
+## SELECT *
+## FROM datawarehouse.airport
+## LIMIT 6
+```
+
+- **dbplyr** will automatically translate all of our **dplyr** commands into SQL code that will work with our database!
+
+---
+
+# Summary
+- Why is this so great?
+- Earlier I mentioned how loading all of this data into memory on a local computer can slow the computer down. Along with slowing down the analysis.
+- When we run these chunks of code all of the computing is done on the database side! - With large datasets with will allow users to easily access data from a datasource and carry out an analysis without noticing a drop in speed or coding in R.
+- This plays nicely with Apache Spark as well
+- With the library **sparklyr** we can go as far as building machine learning models with big data on the database side using the same syntax!
+- This can be used with reports, shiny applications & dashboards, and analysis
+
+<!-- Here are some bullet points Matt mentioned that would be beneficial for them to know. I know you can answer these more deeply on how it will help them as a company vs what I lightly know on the topic. -->
+
+---
+
+# RS Connect
+
+- Internal & External Delivery
+  - Access for clients, employees, etc
+  -Note: Matt says user access infrastructure is not there
+- Security & Hosting
+  - Microsoft/Azure Auth?
+  
+---
+
+
+
+- Key takeaway from conference
+- Why we are excited
+- How it helps CLA
+- Why add more tools? What would this 'R eco system' bring?
+- Future tool choosing; how to choose what software to use
