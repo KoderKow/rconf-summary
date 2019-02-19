@@ -29,23 +29,23 @@ class:
 
 # RStudio Conference
 
-- For all things R and RStuido
+- For all things R and RStudio
 - First two days were for workshops
     - Everything from big data/database courses, shiny, reproducible reports, admin, and  introduction courses
-- Last two days had talks throughout the day with some keynotes
-    - These should all be recorded and are publicly available
+- Last two days had talks throughout the day with keynotes beginning the day
+    - These should all be recorded and be publicly available
     - Includes variety of topics from stories with R to presenting exciting packages that are in development
 
 ---
 
 # Workshops: Big Data
 
-- This class showcased the power the RStudio IDE (Integrated development environment) has with connecting directly to a data base
+- This class showcased the power the RStudio IDE (Integrated development environment) is for connecting directly to a database
 - Plugins are available for all major database types
     - Microsoft SQL Server, Postgres, Redshift, etc
 - One of the notable issues with RStudio is loading data into memory. If there is a situation where the data are "big". 
     - "Data > Ram" 
-- The R library **dplyr** and **dbplyr** allow the user to only have to know the dplyr syntax to work with the data from a database
+- The R library **dplyr** and **dbplyr** allow the user to only have to know the dplyr syntax to work with the data from a database (no SQL required)
     - Wow!
 
 ---
@@ -121,13 +121,53 @@ airports %>%
 
 ---
 
+# Key R Advantages
+
+- Automate the boring stuff, moving away from mundane, labor intensive tasks to work that is intrinsically motivating and satisfying!
+    - Extracting data from databases
+    - Transforming/Aggregating/Wrangling Data
+    - Visualizing Data
+    - Analyzing Data
+- Provide sleek, interactive client-facing products that allow faster, more powerful insight generation (RStudio Connect/RMarkdown)
+- Provide access to large number of machine and statistical learning facilities (including spark and other big data technologies) to reduce manual forecasting and predictions when feasible and desired
+- Reduce administrative/time burden when sending reports internally between DA team members, decision makers, etc.
+- Have fun!
+
+---
+
+# How to Choose
+
+- This likely depends on the skills on the team, the job to be completed, the time allotted, and the budget
+- New R users will be slower and will encounter a learning curve, similar to learning any programming language
+- In general:
+    - Can it be scripted in a straightforward fashion? If yes, utilize R (or another scripting language) for that portion to avoid unnecessary time, especially when scaling the process
+        - Database access on application start
+        - Scheduled tasks for very large data requiring substantial cleaning/aggregation
+    - Does the task require substantial ML/statistical learning?
+        - R has access to many analytical tools, build code to let these methods all compete with each other, may the best algorithm win
+        - Scale analysis over many datasets from many sources
+    - Is there a team/time/project-specific reason not to use R? Then keep it as it is
+        - Non R-user
+        - Client prefers other set-up, such as PowerBI, for their deliverables
+        - Existing PowerBI dashboard well developed, plug R into PowerBI to automate manual tasks
+        - In most cases, imagine slowly transitioning into R or another scripting language in the long term, at least for data access/cleaning/wrangling (aggregation) and statistical/ML methods
+        
+
+---
+
 # RS Connect
 
 - Internal & External Delivery
   - Access for clients, employees, etc
-  -Note: Matt says user access infrastructure is not there
+      - Authentication via LDAP, built into RStudio Connect product
+      - Clients can request accounts through non-secured shiny applications hosted on RStudio connect
+      - IT makes decision regarding whether account is admissible, then creates account, access to application provided
+      - Internal: depends on already existing Authentication system (seamlessly integrated with LDAP or AD systems)
+  - Note: Matt says user access infrastructure is not there
 - Security & Hosting
   - Microsoft/Azure Auth?
+  - Microsoft Azure works - deploying a Linux box within this framework to run ubuntu/nginx and then install RStudio Connect on top
+  
   
 ---
 
@@ -136,5 +176,5 @@ airports %>%
 - Key takeaway from conference
 - Why we are excited
 - How it helps CLA
-- Why add more tools? What would this 'R eco system' bring?
+- Why add more tools? What would this 'R ecosystem' bring?
 - Future tool choosing; how to choose what software to use
