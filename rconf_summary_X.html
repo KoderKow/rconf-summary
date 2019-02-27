@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RStudio Conference Summary</title>
+    <meta charset="utf-8">
+    <meta name="date" content="2019-02-27" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# RStudio Conference Summary
+### 2019-02-27
+
+---
+
+
+
+
+class:
+
+# Overview
+
+- What is RStudio Conference
+- Workshops
+- Key Takeaways
+- RStudio Connect
+
+---
+
+# RStudio Conference
+
+- For all things R and RStudio
+- First two days were for workshops
+    - Everything from big data/database courses, shiny, reproducible reports, admin, and  introduction courses
+- Last two days had talks throughout the day with keynotes beginning the day
+    - These should all be recorded and be publicly available
+    - Includes variety of topics from stories with R to presenting exciting packages that are in development
+
+---
+
+# Workshops: Big Data
+
+- This class showcased the power the RStudio IDE (Integrated development environment) is for connecting directly to a database
+- Plugins are available for all major database types
+    - Microsoft SQL Server, Postgres, Redshift, etc
+- One of the notable issues with RStudio is loading data into memory. If there is a situation where the data are "big". 
+    - "Data &gt; Ram" 
+- The R library **dplyr** and **dbplyr** allow the user to only have to know the dplyr syntax to work with the data from a database (no SQL required)
+    - Wow!
+
+---
+
+# Quick Example
+
+- Create a connection
+
+```r
+con &lt;- DBI::dbConnect(odbc::odbc(),
+                      Driver   = "[your driver's name]",
+                      Server   = "[your server's path]",
+                      Database = "[your database's name]",
+                      UID      = rstudioapi::askForPassword("Database user"),
+                      PWD      = rstudioapi::askForPassword("Database password"),
+                      Port     = 1433)
+```
+
+- *Note*: RStudio Connect allows the system admin to have data connections per user, more on that later
+- Create a variable that *references a table*, this referenced table will act like a data frame in R
+
+```r
+airports &lt;- tbl(con, in_schema("datawarehouse", "airport"))
+```
+
+- This reference will allow us to do anything we want. If you were handed this data frame without context, you wouldn't tell the difference
+
+---
+
+# Quick Example Cont'd
+
+- Simple select all query
+
+```r
+airports %&gt;%
+  show_query()
+```
+
+```r
+## &lt;SQL&gt;
+## SELECT *
+## FROM datawarehouse.airport
+```
+
+- Same thing, but just the head of the data; first 6 rows
+
+```r
+airports %&gt;%
+  head() %&gt;%
+  show_query()
+```
+
+```r
+## &lt;SQL&gt;
+## SELECT *
+## FROM datawarehouse.airport
+## LIMIT 6
+```
+
+- **dbplyr** will automatically translate all of our **dplyr** commands into SQL code that will work with our database!
+
+---
+
+# Summary
+- Why is this so great?
+- Earlier I mentioned how loading all of this data into memory on a local computer can slow the computer down. Along with slowing down the analysis.
+- When we run these chunks of code all of the computing is done on the database side! - With large datasets with will allow users to easily access data from a datasource and carry out an analysis without noticing a drop in speed or coding in R.
+- This plays nicely with Apache Spark as well
+- With the library **sparklyr** we can go as far as building machine learning models with big data on the database side using the same syntax!
+- This can be used with reports, shiny applications &amp; dashboards, and analysis
+
+&lt;!-- Here are some bullet points Matt mentioned that would be beneficial for them to know. I know you can answer these more deeply on how it will help them as a company vs what I lightly know on the topic. --&gt;
+
+---
+
+# Key R Advantages
+
+- Automate the boring stuff, moving away from mundane, labor intensive tasks to work that is intrinsically motivating and satisfying!
+    - Extracting data from databases
+    - Transforming/Aggregating/Wrangling Data
+    - Visualizing Data
+    - Analyzing Data
+- Provide sleek, interactive client-facing products that allow faster, more powerful insight generation (RStudio Connect/RMarkdown)
+- Provide access to large number of machine and statistical learning facilities (including spark and other big data technologies) to reduce manual forecasting and predictions when feasible and desired
+- Reduce administrative/time burden when sending reports internally between DA team members, decision makers, etc.
+- Have fun!
+
+---
+
+# How to Choose
+
+- This likely depends on the skills on the team, the job to be completed, the time allotted, and the budget
+- New R users will be slower and will encounter a learning curve, similar to learning any programming language
+- In general:
+    - Can it be scripted in a straightforward fashion? If yes, utilize R (or another scripting language) for that portion to avoid unnecessary time, especially when scaling the process
+        - Database access on application start
+        - Scheduled tasks for very large data requiring substantial cleaning/aggregation
+    - Does the task require substantial ML/statistical learning?
+        - R has access to many analytical tools, build code to let these methods all compete with each other, may the best algorithm win
+        - Scale analysis over many datasets from many sources
+    - Is there a team/time/project-specific reason not to use R? Then keep it as it is
+        - Non R-user
+        - Client prefers other set-up, such as PowerBI, for their deliverables
+        - Existing PowerBI dashboard well developed, plug R into PowerBI to automate manual tasks
+        - In most cases, imagine slowly transitioning into R or another scripting language in the long term, at least for data access/cleaning/wrangling (aggregation) and statistical/ML methods
+        
+
+---
+
+# RS Connect
+
+- Internal &amp; External Delivery
+  - Access for clients, employees, etc
+      - Authentication via LDAP, built into RStudio Connect product
+      - Clients can request accounts through non-secured shiny applications hosted on RStudio connect
+      - IT makes decision regarding whether account is admissible, then creates account, access to application provided
+      - Internal: depends on already existing Authentication system (seamlessly integrated with LDAP or AD systems)
+  - Note: Matt says user access infrastructure is not there
+- Security &amp; Hosting
+  - Microsoft/Azure Auth?
+  - Microsoft Azure works - deploying a Linux box within this framework to run ubuntu/nginx and then install RStudio Connect on top
+  
+  
+---
+
+
+
+- Key takeaway from conference
+- Why we are excited
+- How it helps CLA
+- Why add more tools? What would this 'R ecosystem' bring?
+- Future tool choosing; how to choose what software to use
+    </textarea>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
