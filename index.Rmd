@@ -61,9 +61,9 @@ name: workshops
 - This class showcased the power the RStudio IDE (Integrated development environment) is for connecting directly to a database
 - Plugins are available for all major database types
     - Microsoft SQL Server, Postgres, Redshift, etc
-- One of the notable issues with RStudio is loading data into memory. If there is a situation where the data are "big". 
-    - "Data > Ram" 
-- The R library **dplyr** and **dbplyr** allow the user to only have to know the dplyr syntax to work with the data from a database (no SQL required)
+- One of the notable issues with RStudio is loading data into memory. During the workshop there was talk of what is "big". 
+    - "Data > RAM"
+- The R library [dplyr](https://dplyr.tidyverse.org/) and [dbplyr](https://dbplyr.tidyverse.org/articles/dbplyr.html) allow the user to only have to know the dplyr syntax to work with the data from a database (no SQL required)
     - Wow!!
 
 ---
@@ -120,18 +120,22 @@ airports %>%
 ## LIMIT 6
 ```
 
-- **dbplyr** will automatically translate all of our **dplyr** commands into SQL code that will work with our database!
+- [dplyr](https://dplyr.tidyverse.org/) will automatically translate all of our [dbplyr](https://dbplyr.tidyverse.org/articles/dbplyr.html) commands into SQL code that will work with our database!
 
 ---
 
 # Summary
 
 - Why is this so great?
-- Earlier I mentioned how loading all of this data into memory on a local computer can slow the computer down. Along with slowing down the analysis.
-- When we run these chunks of code all of the computing is done on the database side! - With large datasets with will allow users to easily access data from a datasource and carry out an analysis without noticing a drop in speed or coding in R.
+- Earlier I mentioned how loading all of this data into memory on a local computer can slow the computer down. Along with slowing down the analysis
+- When we run these chunks of code all of the computing is done on the database side! With large datasets with will allow users to easily access data from a datasource and carry out an analysis without noticing a drop in speed or coding in R
+- This also avoids users having to keep possible high secure files off of their local machines
+- We can use this method for any R work flow
+    - Shiny
+    - RMarkdown (repoducible reports)
+    - Quick ad-hoc analysis
 - This plays nicely with Apache Spark as well
-- With the library **sparklyr** we can go as far as building machine learning models with big data on the database side using the same syntax!
-- This can be used with reports, shiny applications & dashboards, and analysis
+- With the library [sparklyr](https://spark.rstudio.com/) we can go as far as building machine learning models with big data on the database side using the same syntax!
 
 <!-- Here are some bullet points Matt mentioned that would be beneficial for them to know. I know you can answer these more deeply on how it will help them as a company vs what I lightly know on the topic. -->
 
