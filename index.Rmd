@@ -3,29 +3,45 @@ title: "RStudio Conference Summary"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
-    # chakra: libs/remark-latest.min.js
-    # lib_dir: libs
+    lib_dir: libs
+    css: ["tweaks.css", middlebury]
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
       ratio: '16:9'
+    seal: false
 ---
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 ```
 
+class: title-slide   
+
+---
+
+layout: true
+
+<div class="my-footer"></div>
+
+---
+
 class:
 
 # Overview
 
-- What is RStudio Conference
-- Workshops
-- Key Takeaways
-- RStudio Connect
+- [What is RStudio Conference](#rconf)
+- [Workshops](#workshops)
+- [Key R Advantages](#advantages)
+- [Tool Choosing: When to Pick R](#toolchoosing)
+- [RStudio Connect](#rsconnect)
+
+Slides are available at http://bit.ly/rconf2019
 
 ---
+
+name: rconf
 
 # RStudio Conference
 
@@ -38,6 +54,8 @@ class:
 
 ---
 
+name: workshops
+
 # Workshops: Big Data
 
 - This class showcased the power the RStudio IDE (Integrated development environment) is for connecting directly to a database
@@ -46,7 +64,7 @@ class:
 - One of the notable issues with RStudio is loading data into memory. If there is a situation where the data are "big". 
     - "Data > Ram" 
 - The R library **dplyr** and **dbplyr** allow the user to only have to know the dplyr syntax to work with the data from a database (no SQL required)
-    - Wow!
+    - Wow!!
 
 ---
 
@@ -76,9 +94,6 @@ airports <- tbl(con, in_schema("datawarehouse", "airport"))
 ---
 
 # Quick Example Cont'd
-
-<!-- - Simple select all query -->
-
 ```r
 airports %>%
   show_query()
@@ -110,6 +125,7 @@ airports %>%
 ---
 
 # Summary
+
 - Why is this so great?
 - Earlier I mentioned how loading all of this data into memory on a local computer can slow the computer down. Along with slowing down the analysis.
 - When we run these chunks of code all of the computing is done on the database side! - With large datasets with will allow users to easily access data from a datasource and carry out an analysis without noticing a drop in speed or coding in R.
@@ -120,6 +136,8 @@ airports %>%
 <!-- Here are some bullet points Matt mentioned that would be beneficial for them to know. I know you can answer these more deeply on how it will help them as a company vs what I lightly know on the topic. -->
 
 ---
+
+name: advantages
 
 # Key R Advantages
 
@@ -134,6 +152,8 @@ airports %>%
 - Have fun!
 
 ---
+
+name: toolchoosing
 
 # How to Choose
 
@@ -154,6 +174,8 @@ airports %>%
 
 
 ---
+
+name: rsconnect
 
 # RS Connect
 
