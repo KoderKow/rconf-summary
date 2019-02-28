@@ -58,7 +58,7 @@ name: workshops
 
 # Workshops: Big Data
 
-- This class showcased the power the RStudio IDE (Integrated development environment) is for connecting directly to a database
+- This class showcased the power the RStudio IDE (Integrated development environment) has for connecting directly to a database. [Here](https://github.com/rstudio/bigdataclass) is a link to the workshop slides and materials on Github
 - Plugins are available for all major database types
     - Microsoft SQL Server, Postgres, Redshift, etc
 - One of the notable issues with RStudio is loading data into memory. During the workshop there was talk of what is "big". 
@@ -94,6 +94,7 @@ airports <- tbl(con, in_schema("datawarehouse", "airport"))
 ---
 
 # Quick Example Cont'd
+
 ```r
 airports %>%
   show_query()
@@ -104,8 +105,6 @@ airports %>%
 ## SELECT *
 ## FROM datawarehouse.airport
 ```
-
-<!-- - Same thing, but just the head of the data; first 6 rows -->
 
 ```r
 airports %>%
@@ -120,7 +119,7 @@ airports %>%
 ## LIMIT 6
 ```
 
-- [dplyr](https://dplyr.tidyverse.org/) will automatically translate all of our [dbplyr](https://dbplyr.tidyverse.org/articles/dbplyr.html) commands into SQL code that will work with our database!
+- [dplyr](https://dplyr.tidyverse.org/) will automatically translate all of our [dbplyr](https://dbplyr.tidyverse.org/articles/dbplyr.html) commands into SQL code that will work with our database
 
 ---
 
@@ -193,15 +192,7 @@ name: rsconnect
 - Security & Hosting
   - Microsoft/Azure Auth?
   - Microsoft Azure works - deploying a Linux box within this framework to run ubuntu/nginx and then install RStudio Connect on top
-
-
----
-
-
-
-- Key takeaway from conference
-- Why we are excited
-- How it helps CLA
-- Why add more tools? What would this 'R ecosystem' bring?
-- Future tool choosing; how to choose what software to use
-- test to see if branch gh-pages is needed
+  - RStudio representatives are available to talk about security concerns.
+      - Hosting private and seure data
+      - Microsoft/Azure secure login
+  - It would be great to gather everyones questions and concerns so we can connect with them to get them answered
