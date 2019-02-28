@@ -204,3 +204,4 @@ name: rsconnect
 - How it helps CLA
 - Why add more tools? What would this 'R ecosystem' bring?
 - Future tool choosing; how to choose what software to use
+- test to see if branch gh-pages is needed
