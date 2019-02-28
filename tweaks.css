@@ -1,0 +1,37 @@
+.title-slide {
+  background-image: url("https://www.rstudio.com/wp-content/uploads/2018/08/rstudio-conf.jpg");
+  background-size: cover;
+}
+.title-slide h1, h2, h3 {
+  text-align: center;
+  color: #F7F8FA;
+}
+
+.title-slide .remark-slide-number {
+  display: none;
+}
+
+div.my-footer {
+content: "";
+    position: absolute;
+    bottom: 15px;
+    right:   8px;
+    height: 60px;
+    width: 140px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("https://www.blackrivercountry.net/wp-content/sabai/File/files/l_548f4406cc9e7b71f758de272d180913.png");
+}
+
+.footer {
+    position: fixed;
+    top: 95%;
+    left: 0;
+    text-align: left;
+    width: 100%;
+    font-size: 13px;
+}
+
+.remark-slide-number {
+  opacity: 0; /* default: 0.5 */
+}
