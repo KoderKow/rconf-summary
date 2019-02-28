@@ -4,31 +4,40 @@
     <title>RStudio Conference Summary</title>
     <meta charset="utf-8">
     <meta name="date" content="2019-02-27" />
-    <link href="index_files/remark-css/default.css" rel="stylesheet" />
-    <link href="index_files/remark-css/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/middlebury.css" rel="stylesheet" />
+    <link rel="stylesheet" href="tweaks.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
-class: center, middle, inverse, title-slide
 
-# RStudio Conference Summary
-### 2019-02-27
+
+
+
+class: title-slide   
 
 ---
 
+layout: true
 
+&lt;div class="my-footer"&gt;&lt;/div&gt;
 
+---
 
 class:
 
 # Overview
 
-- What is RStudio Conference
-- Workshops
-- Key Takeaways
-- RStudio Connect
+- [What is RStudio Conference](#rconf)
+- [Workshops](#workshops)
+- [Key R Advantages](#advantages)
+- [Tool Choosing: When to Pick R](#toolchoosing)
+- [RStudio Connect](#rsconnect)
+
+Slides are available at http://bit.ly/rconf2019
 
 ---
+
+name: rconf
 
 # RStudio Conference
 
@@ -41,6 +50,8 @@ class:
 
 ---
 
+name: workshops
+
 # Workshops: Big Data
 
 - This class showcased the power the RStudio IDE (Integrated development environment) is for connecting directly to a database
@@ -49,7 +60,7 @@ class:
 - One of the notable issues with RStudio is loading data into memory. If there is a situation where the data are "big". 
     - "Data &gt; Ram" 
 - The R library **dplyr** and **dbplyr** allow the user to only have to know the dplyr syntax to work with the data from a database (no SQL required)
-    - Wow!
+    - Wow!!
 
 ---
 
@@ -79,9 +90,6 @@ airports &lt;- tbl(con, in_schema("datawarehouse", "airport"))
 ---
 
 # Quick Example Cont'd
-
-&lt;!-- - Simple select all query --&gt;
-
 ```r
 airports %&gt;%
   show_query()
@@ -113,6 +121,7 @@ airports %&gt;%
 ---
 
 # Summary
+
 - Why is this so great?
 - Earlier I mentioned how loading all of this data into memory on a local computer can slow the computer down. Along with slowing down the analysis.
 - When we run these chunks of code all of the computing is done on the database side! - With large datasets with will allow users to easily access data from a datasource and carry out an analysis without noticing a drop in speed or coding in R.
@@ -123,6 +132,8 @@ airports %&gt;%
 &lt;!-- Here are some bullet points Matt mentioned that would be beneficial for them to know. I know you can answer these more deeply on how it will help them as a company vs what I lightly know on the topic. --&gt;
 
 ---
+
+name: advantages
 
 # Key R Advantages
 
@@ -137,6 +148,8 @@ airports %&gt;%
 - Have fun!
 
 ---
+
+name: toolchoosing
 
 # How to Choose
 
@@ -157,6 +170,8 @@ airports %&gt;%
 
 
 ---
+
+name: rsconnect
 
 # RS Connect
 
