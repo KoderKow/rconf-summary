@@ -37,7 +37,7 @@ class:
 - [Tool Choosing: When to Pick R](#toolchoosing)
 - [RStudio Connect](#rsconnect)
 
-Slides are available at http://bit.ly/rconf2019
+Slides are available at ()[https://koderkow.github.io/rconf-summary/]
 
 ---
 
